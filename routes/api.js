@@ -108,7 +108,7 @@ router.put('/:table/:id', function (req, res, next) {
             }
         }
         fs.writeFileSync(filePath, JSON.stringify(data), 'utf8')
-        res.send(`Entiti updated to ${data}`);
+        res.send(`Entity updated to ${data}`);
     });
 });
 
