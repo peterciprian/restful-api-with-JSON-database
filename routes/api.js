@@ -89,4 +89,27 @@ router.delete('/:table/:id', function (req, res, next) {
     });
 });
 
+/**
+ * UPDATE object propreties by id
+ */
+router.put('/:table/:id', function (req, res, next) {
+    const filePath = getDBPath(req.params.table);
+    fs.readFile(getDBPath(req.params.table), 'utf8', (err, jsonData) => {
+        if (err) {
+            return res.sendStatus(404);
+        }
+        data = JSON.parse(jsonData);
+        for (let i in data) {
+            if (data[i]._id === req.params.id) {
+                data[i].name = req.body.name || data[i].name;
+                data[i].email = req.body.email || data[i].email;
+                data[i].job = req.body.job || data[i].job;
+                data[i].adress = req.body.adress || data[i].adress;
+            }
+        }
+        fs.writeFileSync(filePath, JSON.stringify(data), 'utf8')
+        res.send(`Entiti updated to ${data}`);
+    });
+});
+
 module.exports = router;
