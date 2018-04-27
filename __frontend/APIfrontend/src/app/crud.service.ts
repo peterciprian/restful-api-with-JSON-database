@@ -11,7 +11,8 @@ export class CrudService {
   getAll(table) {
     this.http.get('http://localhost:3000/api/' + table).subscribe(
       data => {
-        this.data = data;
+        console.log(JSON.parse(data['_body']));
+        this.data = JSON.parse(data['_body']);
       });
   }
 

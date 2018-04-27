@@ -19,16 +19,20 @@ export class UsersComponent implements OnInit {
     job: '',
     address: ''
   }
-
-  user: object = {
+  users: any;
+  /*user: object = {
     name: '',
     email: '',
     job: '',
     address: ''
-  }
+  }*/
 
   constructor(public http: HttpClient, private CRUDservice: CrudService) {
     this.CRUDservice.getAll('user');
+    setTimeout(() => {
+      this.users = this.CRUDservice.data;
+      console.log(this.CRUDservice.data);
+    }, 100);
   }
 
   ngOnInit() {
