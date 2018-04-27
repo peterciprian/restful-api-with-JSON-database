@@ -1,3 +1,39 @@
-<p>
-  rents works!
-</p>
+<table class="table table hover">
+  <thead>
+    <tr>
+      <td>Book</td>
+      <td>User</td>
+      <td>Rented</td>
+      <td>Returned</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <input class="form-control" type="text" name="book" placeholder="Book" [(ngModel)]="newRent.book" required>
+      </td>
+      <td>
+        <input class="form-control" type="text" name="user" placeholder="User" [(ngModel)]="newRent.user" required>
+      </td>
+      <td>
+        <input class="form-control" type="text" name="rented" placeholder="Rented" [(ngModel)]="newRent.rented" required>
+      </td>
+      <td>
+        <input class="form-control" type="text" name="returned" placeholder="Returned" [(ngModel)]="newRent.returned" required>
+      </td>
+      <td>
+        <button class="btn btn-success btn-block" (click)="create()">Create</button>
+      </td>
+    </tr>
+    <tr *ngFor="let rent of rents">
+      <td>{{rent.book}}</td>
+      <td>{{rent.user}}</td>
+      <td>{{rent.rented}}</td>
+      <td>{{rent.returned}}</td>
+      <td class="btn-group">
+        <button class="btn btn-info" (click)="update(rent.id)">Update</button>
+        <button class="btn btn-danger" (click)="delete(rent.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

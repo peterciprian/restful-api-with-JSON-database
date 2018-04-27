@@ -10,7 +10,7 @@ import { RouteComponent } from './route/route.component';
 import { UsersComponent } from './users/users.component';
 import { AuthorsComponent } from './authors/authors.component';
 import { BooksComponent } from './books/books.component';
-import { GenereComponent } from './genere/genere.component';
+import { GenreComponent } from './genre/genre.component';
 import { RentsComponent } from './rents/rents.component';
 import { CrudService } from './crud.service';
 
@@ -20,7 +20,7 @@ const routes: Routes = [
   { component: UsersComponent, path: 'users' },
   { component: AuthorsComponent, path: 'authors' },
   { component: BooksComponent, path: 'books' },
-  { component: GenereComponent, path: 'genere' },
+  { component: GenreComponent, path: 'genre' },
   { component: RentsComponent, path: 'rents' }
 ];
 
@@ -31,7 +31,7 @@ const routes: Routes = [
     UsersComponent,
     AuthorsComponent,
     BooksComponent,
-    GenereComponent,
+    GenreComponent,
     RentsComponent
   ],
   imports: [

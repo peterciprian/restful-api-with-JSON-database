@@ -6,24 +6,23 @@ import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import { CrudService } from '../crud.service';
 
 @Component({
-  selector: 'app-rents',
-  templateUrl: './rents.component.html',
-  styleUrls: ['./rents.component.css']
+  selector: 'app-genre',
+  templateUrl: './genre.component.html',
+  styleUrls: ['./genre.component.css']
 })
-export class RentsComponent implements OnInit {
+export class GenreComponent implements OnInit {
 
-  newRent: object = {
-    book: '',
-    user: '',
-    rented: '',
-    returned: ''
+  newGenre: object = {
+    genreName: '',
+    majorGenre: '',
+    fiction: ''
   }
-  rents: any;
+  genres: any;
 
   constructor(public http: HttpClient, private CRUDservice: CrudService) {
-    this.CRUDservice.getAll('rent');
+    this.CRUDservice.getAll('genre');
     setTimeout(() => {
-      this.rents = this.CRUDservice.data;
+      this.genres = this.CRUDservice.data;
       console.log(this.CRUDservice.data);
     }, 100);
   }

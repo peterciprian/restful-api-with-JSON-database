@@ -12,7 +12,7 @@ export class RouteComponent implements OnInit {
     { label: 'Kölcsönzők', url: '/users' },
     { label: 'Szerzők', url: '/authors' },
     { label: 'Könyvek', url: '/books' },
-    { label: 'Műfaj', url: '/genere' },
+    { label: 'Műfaj', url: '/genre' },
     { label: 'Kölcsönzések', url: '/rents' }
   ];
 
