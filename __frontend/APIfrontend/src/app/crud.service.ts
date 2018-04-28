@@ -25,7 +25,7 @@ export class CrudService {
   }
 
   create(table, newData) {
-    this.http.post('http://localhost:3000/api' + table, newData).subscribe(
+    this.http.post('http://localhost:3000/api/' + table, newData).subscribe(
       data => {
         console.log(data);
         this.getAll(table);
@@ -40,7 +40,7 @@ export class CrudService {
   }
 
   delete(table, id) {
-    this.http.delete('http://localhost:3000/' + table + '/' + id).subscribe(
+    this.http.delete('http://localhost:3000/api/' + table + '/' + id).subscribe(
       data => {
         console.log(data);
         this.getAll(table);

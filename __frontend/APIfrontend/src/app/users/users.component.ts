@@ -20,15 +20,16 @@ export class UsersComponent implements OnInit {
     address: ''
   }
   users: any;
-  /*user: object = {
+  table: string = 'user';
+  actualUser: object = {
     name: '',
     email: '',
     job: '',
     address: ''
-  }*/
+  }
 
   constructor(public http: HttpClient, private CRUDservice: CrudService) {
-    this.CRUDservice.getAll('user');
+    this.CRUDservice.getAll(this.table);
     setTimeout(() => {
       this.users = this.CRUDservice.data;
       console.log(this.CRUDservice.data);
@@ -36,6 +37,28 @@ export class UsersComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  create() {
+    this.CRUDservice.create(this.table, this.newUser);
+    this.CRUDservice.getAll(this.table);
+    setTimeout(() => {
+      this.users = this.CRUDservice.data;
+      console.log(this.CRUDservice.data);
+    }, 200);
+  }
+
+  update(userid) {
+    this.CRUDservice.update(this.table, userid, this.actualUser);
+  }
+
+  delete(userid) {
+    this.CRUDservice.delete(this.table, userid);
+    this.CRUDservice.getAll(this.table);
+    setTimeout(() => {
+      this.users = this.CRUDservice.data;
+      console.log(this.CRUDservice.data);
+    }, 200);
   }
 
 }
