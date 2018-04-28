@@ -89,9 +89,24 @@ router.delete('/:table/:id', function (req, res, next) {
     });
 });
 
+
 /**
  * UPDATE object propreties by id
  */
+router.put('/:table/:id', function (req, res, next) {
+    const filePath = getDBPath(req.params.table);
+    fs.readFile(getDBPath(req.params.table), 'utf8', (err, jsonData) => {
+        if (err) {
+            return res.sendStatus(404);
+        }
+        filteredData = JSON.parse(jsonData).filter(obj => obj._id != req.params.id);
+        req.body._id = req.params.id;
+        filteredData.push(req.body);
+        fs.writeFileSync(filePath, JSON.stringify(filteredData), 'utf8')
+        res.json(`Entity updated to ${req.body}`);
+    });
+});
+/*
 router.put('/:table/:id', function (req, res, next) {
     const filePath = getDBPath(req.params.table);
     fs.readFile(getDBPath(req.params.table), 'utf8', (err, jsonData) => {
@@ -111,5 +126,6 @@ router.put('/:table/:id', function (req, res, next) {
         res.send(`Entity updated to ${data}`);
     });
 });
+*/
 
 module.exports = router;

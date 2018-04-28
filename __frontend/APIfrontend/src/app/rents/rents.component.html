@@ -10,19 +10,20 @@
   <tbody>
     <tr>
       <td>
-        <input class="form-control" type="text" name="book" placeholder="Book" [(ngModel)]="newRent.book" required>
+        <input class="form-control" type="text" name="book" placeholder="Book" [(ngModel)]="newRent.book" #book="ngModel" required>
       </td>
       <td>
-        <input class="form-control" type="text" name="user" placeholder="User" [(ngModel)]="newRent.user" required>
+        <input class="form-control" type="text" name="user" placeholder="User" [(ngModel)]="newRent.user" #user="ngModel" required>
       </td>
       <td>
-        <input class="form-control" type="text" name="rented" placeholder="Rented" [(ngModel)]="newRent.rented" required>
+        <input class="form-control" type="text" name="rented" placeholder="Rented" [(ngModel)]="newRent.rented" #rented="ngModel"
+          required>
       </td>
       <td>
-        <input class="form-control" type="text" name="returned" placeholder="Returned" [(ngModel)]="newRent.returned" required>
+        <input class="form-control" type="text" name="returned" placeholder="Returned" [(ngModel)]="newRent.returned">
       </td>
       <td>
-        <button class="btn btn-success btn-block" (click)="create()">Create</button>
+        <button class="btn btn-success btn-block" (click)="create()" [disabled]="!book.valid || !user.valid || !rented.valid">Create</button>
       </td>
     </tr>
     <tr *ngFor="let rent of rents">

@@ -12,25 +12,28 @@
   <tbody>
     <tr>
       <td>
-        <input class="form-control" type="text" name="name" placeholder="Title" [(ngModel)]="newBook.title" required>
+        <input class="form-control" type="text" name="name" placeholder="Title" [(ngModel)]="newBook.title" #title="ngModel" required>
       </td>
       <td>
-        <input class="form-control" type="text" name="author" placeholder="Author" [(ngModel)]="newBook.author" required>
+        <input class="form-control" type="text" name="author" placeholder="Author" [(ngModel)]="newBook.author" #author="ngModel"
+          required>
       </td>
       <td>
-        <input class="form-control" type="text" name="genre" placeholder="Genre" [(ngModel)]="newBook.genre" required>
+        <input class="form-control" type="text" name="genre" placeholder="Genre" [(ngModel)]="newBook.genre" #genre="ngModel" required>
       </td>
       <td>
-        <input class="form-control" type="text" name="published" placeholder="Published" [(ngModel)]="newBook.published" required>
+        <input class="form-control" type="text" name="published" placeholder="Published" [(ngModel)]="newBook.published" #published="ngModel"
+          required>
       </td>
       <td>
-        <input class="form-control" type="text" name="Publisher" placeholder="Publisher" [(ngModel)]="newBook.publisher" required>
+        <input class="form-control" type="text" name="Publisher" placeholder="Publisher" [(ngModel)]="newBook.publisher" #publisher="ngModel"
+          required>
       </td>
       <td>
-        <input class="form-control" type="text" name="ISBN" placeholder="ISBN" [(ngModel)]="newBook.ISBN" required>
+        <input class="form-control" type="text" name="ISBN" placeholder="ISBN" [(ngModel)]="newBook.ISBN" #ISBN="ngModel" required>
       </td>
       <td>
-        <button class="btn btn-success btn-block" (click)="create()">Create</button>
+        <button class="btn btn-success btn-block" (click)="create()" [disabled]="!title.valid || !author.valid || !genre.valid || !published.valid || !publisher.valid || !ISBN.valid">Create</button>
       </td>
     </tr>
     <tr *ngFor="let book of books">

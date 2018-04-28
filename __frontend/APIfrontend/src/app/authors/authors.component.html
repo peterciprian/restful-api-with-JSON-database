@@ -10,19 +10,19 @@
   <tbody>
     <tr>
       <td>
-        <input class="form-control" type="text" name="name" placeholder="Name" [(ngModel)]="newAuthor.name" required>
+        <input class="form-control" type="text" name="name" placeholder="Name" [(ngModel)]="newAuthor.name" #name="ngModel" required>
       </td>
       <td>
-        <input class="form-control" type="text" name="born" placeholder="Born" [(ngModel)]="newAuthor.born" required>
+        <input class="form-control" type="text" name="born" placeholder="Born" [(ngModel)]="newAuthor.born" #born="ngModel" required>
       </td>
       <td>
-        <input class="form-control" type="text" name="alive" placeholder="Alive" [(ngModel)]="newAuthor.alive" required>
+        <input class="form-control" type="text" name="alive" placeholder="Alive" [(ngModel)]="newAuthor.alive" #alive="ngModel" required>
       </td>
       <td>
-        <input class="form-control" type="text" name="books" placeholder="Books" [(ngModel)]="newAuthor.books" required>
+        <input class="form-control" type="text" name="books" placeholder="Books" [(ngModel)]="newAuthor.books" #books="ngModel" required>
       </td>
       <td>
-        <button class="btn btn-success btn-block" (click)="create()">Create</button>
+        <button class="btn btn-success btn-block" (click)="create()" [disabled]="!name.valid || !born.valid || !alive.valid || !books.valid">Create</button>
       </td>
     </tr>
     <tr *ngFor="let author of authors">

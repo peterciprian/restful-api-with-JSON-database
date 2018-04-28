@@ -10,19 +10,20 @@
   <tbody>
     <tr>
       <td>
-        <input class="form-control" type="text" name="name" placeholder="Name" [(ngModel)]="newUser.name" required>
+        <input class="form-control" type="text" name="name" placeholder="Name" [(ngModel)]="newUser.name" #name="ngModel" required>
       </td>
       <td>
-        <input class="form-control" type="email" name="email" placeholder="E-mail" [(ngModel)]="newUser.email" required>
+        <input class="form-control" type="email" name="email" placeholder="E-mail" [(ngModel)]="newUser.email" #email="ngModel" required>
       </td>
       <td>
-        <input class="form-control" type="text" name="job" placeholder="Job" [(ngModel)]="newUser.job" required>
+        <input class="form-control" type="text" name="job" placeholder="Job" [(ngModel)]="newUser.job" #job="ngModel" required>
       </td>
       <td>
-        <input class="form-control" type="text" name="address" placeholder="Address" [(ngModel)]="newUser.address" required>
+        <input class="form-control" type="text" name="address" placeholder="Address" [(ngModel)]="newUser.address" #address="ngModel"
+          required>
       </td>
       <td>
-        <button class="btn btn-success btn-block" (click)="create()">Create</button>
+        <button class="btn btn-success btn-block" (click)="create()" [disabled]="!name.valid || !email.valid || !job.valid || !address.valid">Create</button>
       </td>
     </tr>
     <tr *ngFor="let user of users">

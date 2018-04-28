@@ -9,16 +9,19 @@
   <tbody>
     <tr>
       <td>
-        <input class="form-control" type="text" name="name" placeholder="Genre name" [(ngModel)]="newGenre.name" required>
+        <input class="form-control" type="text" name="name" placeholder="Genre name" [(ngModel)]="newGenre.name" #name="ngModel"
+          required>
       </td>
       <td>
-        <input class="form-control" type="text" name="majorGenre" placeholder="majorGenre" [(ngModel)]="newGenre.majorGenre" required>
+        <input class="form-control" type="text" name="majorGenre" placeholder="majorGenre" [(ngModel)]="newGenre.majorGenre" #majorGenre="ngModel"
+          required>
       </td>
       <td>
-        <input class="form-control" type="text" name="fiction" placeholder="fiction" [(ngModel)]="newGenre.fiction" required>
+        <input class="form-control" type="text" name="fiction" placeholder="fiction" [(ngModel)]="newGenre.fiction" #fiction="ngModel"
+          required>
       </td>
       <td>
-        <button class="btn btn-success btn-block" (click)="create()">Create</button>
+        <button class="btn btn-success btn-block" (click)="create()" [disabled]="!name.valid || !majorGenre.valid || !fiction.valid">Create</button>
       </td>
     </tr>
     <tr *ngFor="let genre of genres">
