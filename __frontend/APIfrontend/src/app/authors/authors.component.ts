@@ -20,7 +20,13 @@ export class AuthorsComponent implements OnInit {
     books: ''
   }
   authors: any;
-
+  table: string = 'author';
+  actualAuthor: object = {
+    name: '',
+    born: '',
+    alive: '',
+    books: ''
+  }
   constructor(public http: HttpClient, private CRUDservice: CrudService) {
     this.CRUDservice.getAll('author');
     setTimeout(() => {
@@ -31,5 +37,28 @@ export class AuthorsComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  create() {
+    this.CRUDservice.create(this.table, this.newAuthor);
+    this.CRUDservice.getAll(this.table);
+    setTimeout(() => {
+      this.authors = this.CRUDservice.data;
+      console.log(this.CRUDservice.data);
+    }, 200);
+  }
+
+  update(authorid) {
+    this.CRUDservice.update(this.table, authorid, this.actualAuthor);
+  }
+
+  delete(authorid) {
+    this.CRUDservice.delete(this.table, authorid);
+    this.CRUDservice.getAll(this.table);
+    setTimeout(() => {
+      this.authors = this.CRUDservice.data;
+      console.log(this.CRUDservice.data);
+    }, 200);
+  }
+
 
 }

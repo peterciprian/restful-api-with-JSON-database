@@ -21,6 +21,15 @@ export class BooksComponent implements OnInit {
     ISBN: ''
   }
   books: any;
+  table: string = 'book';
+  actualBook: object = {
+    tite: '',
+    author: '',
+    genre: '',
+    published: '',
+    publisher: '',
+    ISBN: ''
+  }
 
   constructor(public http: HttpClient, private CRUDservice: CrudService) {
     this.CRUDservice.getAll('book');
@@ -32,5 +41,28 @@ export class BooksComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  create() {
+    this.CRUDservice.create(this.table, this.newBook);
+    this.CRUDservice.getAll(this.table);
+    setTimeout(() => {
+      this.books = this.CRUDservice.data;
+      console.log(this.CRUDservice.data);
+    }, 200);
+  }
+
+  update(bookid) {
+    this.CRUDservice.update(this.table, bookid, this.actualBook);
+  }
+
+  delete(bookid) {
+    this.CRUDservice.delete(this.table, bookid);
+    this.CRUDservice.getAll(this.table);
+    setTimeout(() => {
+      this.books = this.CRUDservice.data;
+      console.log(this.CRUDservice.data);
+    }, 200);
+  }
+
 
 }

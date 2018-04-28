@@ -19,7 +19,13 @@ export class RentsComponent implements OnInit {
     returned: ''
   }
   rents: any;
-
+  table: string = 'rent';
+  actualRent: object = {
+    book: '',
+    user: '',
+    rented: '',
+    returned: ''
+  }
   constructor(public http: HttpClient, private CRUDservice: CrudService) {
     this.CRUDservice.getAll('rent');
     setTimeout(() => {
@@ -31,4 +37,25 @@ export class RentsComponent implements OnInit {
   ngOnInit() {
   }
 
+  create() {
+    this.CRUDservice.create(this.table, this.newRent);
+    this.CRUDservice.getAll(this.table);
+    setTimeout(() => {
+      this.rents = this.CRUDservice.data;
+      console.log(this.CRUDservice.data);
+    }, 200);
+  }
+
+  update(rentid) {
+    this.CRUDservice.update(this.table, rentid, this.actualRent);
+  }
+
+  delete(rentid) {
+    this.CRUDservice.delete(this.table, rentid);
+    this.CRUDservice.getAll(this.table);
+    setTimeout(() => {
+      this.rents = this.CRUDservice.data;
+      console.log(this.CRUDservice.data);
+    }, 200);
+  }
 }

@@ -18,6 +18,12 @@ export class GenreComponent implements OnInit {
     fiction: ''
   }
   genres: any;
+  table: string = 'genre';
+  actualGenre: object = {
+    genreName: '',
+    majorGenre: '',
+    fiction: ''
+  }
 
   constructor(public http: HttpClient, private CRUDservice: CrudService) {
     this.CRUDservice.getAll('genre');
@@ -29,5 +35,28 @@ export class GenreComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  create() {
+    this.CRUDservice.create(this.table, this.newGenre);
+    this.CRUDservice.getAll(this.table);
+    setTimeout(() => {
+      this.genres = this.CRUDservice.data;
+      console.log(this.CRUDservice.data);
+    }, 200);
+  }
+
+  update(genreid) {
+    this.CRUDservice.update(this.table, genreid, this.actualGenre);
+  }
+
+  delete(genreid) {
+    this.CRUDservice.delete(this.table, genreid);
+    this.CRUDservice.getAll(this.table);
+    setTimeout(() => {
+      this.genres = this.CRUDservice.data;
+      console.log(this.CRUDservice.data);
+    }, 200);
+  }
+
 
 }
