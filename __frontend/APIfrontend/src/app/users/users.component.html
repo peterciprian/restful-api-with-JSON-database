@@ -26,13 +26,30 @@
         <button class="btn btn-success btn-block" (click)="create()" [disabled]="!name.valid || !email.valid || !job.valid || !address.valid">Create</button>
       </td>
     </tr>
+    <tr>
+      <td>
+        <input class="form-control" type="text" name="name" [(ngModel)]="actualUser.name" #name="ngModel" required>
+      </td>
+      <td>
+        <input class="form-control" type="email" name="email" [(ngModel)]="actualUser.email" #email="ngModel" required>
+      </td>
+      <td>
+        <input class="form-control" type="text" name="job" [(ngModel)]="actualUser.job" #job="ngModel" required>
+      </td>
+      <td>
+        <input class="form-control" type="text" name="address" [(ngModel)]="actualUser.address" #address="ngModel" required>
+      </td>
+      <td>
+        <button class="btn btn-warning btn-block" (click)="update(actualUser._id)" [disabled]="!name.valid || !email.valid || !job.valid || !address.valid">Update</button>
+      </td>
+    </tr>
     <tr *ngFor="let user of users">
       <td>{{user.name}}</td>
       <td>{{user.email}}</td>
       <td>{{user.job}}</td>
       <td>{{user.address}}</td>
       <td class="btn-group">
-        <button class="btn btn-info" (click)="update(user._id)">Update</button>
+        <button class="btn btn-info" (click)="edit(user)">Edit</button>
         <button class="btn btn-danger" (click)="delete(user._id)">Delete</button>
       </td>
     </tr>

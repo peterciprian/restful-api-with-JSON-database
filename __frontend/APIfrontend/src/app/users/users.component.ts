@@ -27,6 +27,7 @@ export class UsersComponent implements OnInit {
     job: '',
     address: ''
   }
+  show: number;
 
   constructor(public http: HttpClient, private CRUDservice: CrudService) {
     this.CRUDservice.getAll(this.table);
@@ -59,6 +60,10 @@ export class UsersComponent implements OnInit {
       this.users = this.CRUDservice.data;
       console.log(this.CRUDservice.data);
     }, 200);
+  }
+
+  edit(user) {
+    this.actualUser = user;
   }
 
 }

@@ -58,4 +58,9 @@ export class RentsComponent implements OnInit {
       console.log(this.CRUDservice.data);
     }, 200);
   }
+
+  edit(rent) {
+    this.actualRent = rent;
+  }
+
 }

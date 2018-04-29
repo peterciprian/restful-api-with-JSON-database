@@ -24,12 +24,26 @@
         <button class="btn btn-success btn-block" (click)="create()" [disabled]="!name.valid || !majorGenre.valid || !fiction.valid">Create</button>
       </td>
     </tr>
+    <tr>
+      <td>
+        <input class="form-control" type="text" name="name" [(ngModel)]="actualGenre.name" #name="ngModel" required>
+      </td>
+      <td>
+        <input class="form-control" type="text" name="majorGenre" [(ngModel)]="actualGenre.majorGenre" #majorGenre="ngModel" required>
+      </td>
+      <td>
+        <input class="form-control" type="text" name="fiction" [(ngModel)]="actualGenre.fiction" #fiction="ngModel" required>
+      </td>
+      <td>
+        <button class="btn btn-warning btn-block" (click)="update(avtualGenre._id)" [disabled]="!name.valid || !majorGenre.valid || !fiction.valid">Update</button>
+      </td>
+    </tr>
     <tr *ngFor="let genre of genres">
       <td>{{genre.name}}</td>
       <td>{{genre.majorGenre}}</td>
       <td>{{genre.fiction}}</td>
       <td class="btn-group">
-        <button class="btn btn-info" (click)="update(genre._id)">Update</button>
+        <button class="btn btn-info" (click)="edit(genre)">Edit</button>
         <button class="btn btn-danger" (click)="delete(genre._id)">Delete</button>
       </td>
     </tr>

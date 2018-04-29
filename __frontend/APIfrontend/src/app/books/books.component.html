@@ -36,6 +36,29 @@
         <button class="btn btn-success btn-block" (click)="create()" [disabled]="!title.valid || !author.valid || !genre.valid || !published.valid || !publisher.valid || !ISBN.valid">Create</button>
       </td>
     </tr>
+    <tr>
+      <td>
+        <input class="form-control" type="text" name="title" [(ngModel)]="actualBook.title" #title="ngModel" required>
+      </td>
+      <td>
+        <input class="form-control" type="text" name="author" [(ngModel)]="actualBook.author" #author="ngModel" required>
+      </td>
+      <td>
+        <input class="form-control" type="text" name="genre" [(ngModel)]="actualBook.genre" #genre="ngModel" required>
+      </td>
+      <td>
+        <input class="form-control" type="text" name="published" [(ngModel)]="actualBook.published" #published="ngModel" required>
+      </td>
+      <td>
+        <input class="form-control" type="text" name="publisher" [(ngModel)]="actualBook.publisher" #publisher="ngModel" required>
+      </td>
+      <td>
+        <input class="form-control" type="text" name="ISBN" [(ngModel)]="actualBook.ISBN" #ISBN="ngModel" required>
+      </td>
+      <td>
+        <button class="btn btn-warning btn-block" (click)="update(actualBook._id)" [disabled]="!title.valid || !author.valid || !genre.valid || !published.valid || !publisher.valid || !ISBN.valid">Update</button>
+      </td>
+    </tr>
     <tr *ngFor="let book of books">
       <td>{{book.title}}</td>
       <td>{{book.author}}</td>
@@ -44,7 +67,7 @@
       <td>{{book.publisher}}</td>
       <td>{{book.ISBN}}</td>
       <td class="btn-group">
-        <button class="btn btn-info" (click)="update(book._id)">Update</button>
+        <button class="btn btn-info" (click)="edit(book)">Edit</button>
         <button class="btn btn-danger" (click)="delete(book._id)">Delete</button>
       </td>
     </tr>

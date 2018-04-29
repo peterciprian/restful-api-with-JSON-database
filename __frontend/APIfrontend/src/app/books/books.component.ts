@@ -64,5 +64,8 @@ export class BooksComponent implements OnInit {
     }, 200);
   }
 
+  edit(book) {
+    this.actualBook = book;
+  }
 
 }

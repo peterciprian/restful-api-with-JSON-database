@@ -25,13 +25,30 @@
         <button class="btn btn-success btn-block" (click)="create()" [disabled]="!name.valid || !born.valid || !alive.valid || !books.valid">Create</button>
       </td>
     </tr>
+    <tr>
+      <td>
+        <input class="form-control" type="text" name="name" [(ngModel)]="actualAuthor.name" #name="ngModel" required>
+      </td>
+      <td>
+        <input class="form-control" type="text" name="born" [(ngModel)]="actualAuthor.born" #born="ngModel" required>
+      </td>
+      <td>
+        <input class="form-control" type="text" name="alive" [(ngModel)]="actualAuthor.alive" #alive="ngModel" required>
+      </td>
+      <td>
+        <input class="form-control" type="text" name="books" [(ngModel)]="actualAuthor.books" #books="ngModel" required>
+      </td>
+      <td>
+        <button class="btn btn-warning btn-block" (click)="update(actualAuthor._id)" [disabled]="!name.valid || !born.valid || !alive.valid || !books.valid">Update</button>
+      </td>
+    </tr>
     <tr *ngFor="let author of authors">
       <td>{{author.name}}</td>
       <td>{{author.born}}</td>
       <td>{{author.alive}}</td>
       <td>{{author.books}}</td>
       <td class="btn-group">
-        <button class="btn btn-info" (click)="update(author._id)">Update</button>
+        <button class="btn btn-info" (click)="edit(author)">Edit</button>
         <button class="btn btn-danger" (click)="delete(author._id)">Delete</button>
       </td>
     </tr>

@@ -60,5 +60,8 @@ export class AuthorsComponent implements OnInit {
     }, 200);
   }
 
+  edit(author) {
+    this.actualAuthor = author;
+  }
 
 }

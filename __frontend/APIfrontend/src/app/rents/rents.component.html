@@ -26,13 +26,30 @@
         <button class="btn btn-success btn-block" (click)="create()" [disabled]="!book.valid || !user.valid || !rented.valid">Create</button>
       </td>
     </tr>
+    <tr>
+      <td>
+        <input class="form-control" type="text" name="book" [(ngModel)]="actualRent.book" #book="ngModel" required>
+      </td>
+      <td>
+        <input class="form-control" type="text" name="user" [(ngModel)]="actualRent.user" #user="ngModel" required>
+      </td>
+      <td>
+        <input class="form-control" type="text" name="rented" [(ngModel)]="actualRent.rented" #rented="ngModel" required>
+      </td>
+      <td>
+        <input class="form-control" type="text" name="returned" [(ngModel)]="actualRent.returned" #returned="ngModel">
+      </td>
+      <td>
+        <button class="btn btn-warning btn-block" (click)="update(actualRent._id)" [disabled]="!book.valid || !user.valid || !rented.valid">Update</button>
+      </td>
+    </tr>
     <tr *ngFor="let rent of rents">
       <td>{{rent.book}}</td>
       <td>{{rent.user}}</td>
       <td>{{rent.rented}}</td>
       <td>{{rent.returned}}</td>
       <td class="btn-group">
-        <button class="btn btn-info" (click)="update(rent._id)">Update</button>
+        <button class="btn btn-info" (click)="edit(rent)">Edit</button>
         <button class="btn btn-danger" (click)="delete(rent._id)">Delete</button>
       </td>
     </tr>

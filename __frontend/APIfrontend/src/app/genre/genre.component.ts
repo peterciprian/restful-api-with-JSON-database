@@ -58,5 +58,8 @@ export class GenreComponent implements OnInit {
     }, 200);
   }
 
+  edit(genre) {
+    this.actualGenre = genre;
+  }
 
 }
